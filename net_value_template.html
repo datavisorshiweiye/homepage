@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="zxx" class="no-js">
 	<head>
-		<script data-ad-client="ca-pub-7043162859045080" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 		<!-- Mobile Specific Meta -->
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		<!-- Favicon-->
@@ -9,18 +8,14 @@
 		<!-- Author Meta -->
 		<meta name="author" content="Colorlib">
 		<!-- Meta Description -->
-		<meta name="description" content="{city}分城区房价趋势图">
+		<meta name="description" content="叶时炜的CTA策略净值">
 		<!-- Meta Keyword -->
-		<meta name="keywords" content="{city}房价">
+		<meta name="keywords" content="CTA策略">
 		<!-- meta character set -->
 		<meta charset="UTF-8">
 		<!-- Site Title -->
-		<title>{city}房价趋势图</title>
+		<title>叶时炜的CTA策略净值曲线</title>
 		<link href="https://fonts.googleapis.com/css?family=Poppins:300,500,600" rel="stylesheet">
-        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-        <link rel="manifest" href="/site.webmanifest">
 		<!--
 		CSS
 		============================================= -->
@@ -32,14 +27,14 @@
 		<link rel="stylesheet" href="css/bootstrap.css">
 		<link rel="stylesheet" href="css/main.css">
 		<style type="text/css">
-			.mobileShow {{display: none;}}
+			.mobileShow {display: none;}
 		  
 			/* Smartphone Portrait and Landscape */
 			@media only screen
 			  and (min-device-width : 320px)
-			  and (max-device-width : 480px){{ 
-				.mobileShow {{display: inline;}}
-			  }}
+			  and (max-device-width : 480px){ 
+				.mobileShow {display: inline;}
+			}
 		  </style>
 	</head>
 	<body>
@@ -50,30 +45,33 @@
 				<div class="header-wrap">
 					<div class="header-top d-flex justify-content-between align-items-center">
 						<div class="logo">
-							<a href="index.html"><img src="img/logo.png" alt=""></a>
+							<a href="index.html"><img src="img/avatar_1.png" alt=""></a>
 						</div>
 						<div class="main-menubar d-flex align-items-center">
 							<nav class="hide">
 								<a href="http://notes.yeshiwei.com">笔记</a>
 								<a href="http://blog.yeshiwei.com">博客</a>
-								<a href="http://www.yeshiwei.com/net_value.html">期货实盘业绩</a>
 								<a href="http://www.yeshiwei.com/fangjia/">房价跟踪</a>
 								<a href="http://quant.yeshiwei.com">机器学习与量化交易论坛</a>
 							</nav>
 							<div class="menu-bar"><span class="lnr lnr-menu"></span></div>
 						</div>
+						
 					</div>
+					
 				</div>
 			</div>
 		</header>
 		<!-- End Header Area -->
+		
 		<!-- Start about Area -->
 		<section class="about-area pt-100 pb-100">
 			<div class="container">
 				<div class="row align-items-center">
+					
 					<div class="col-lg-6">
 						<div class="story-content">
-							<h1>{city}房价趋势图</h1>
+							<h1>北京房价趋势图</h1>
 							<h3>微信扫码关注<span>时炜观察</span></h3>
 							<p class="mt-30">
 								基于模型与数据分享我的知识与观点。关注还可以获取房价爬虫与分析源码。<br>
@@ -83,6 +81,7 @@
 					<div class="col-lg-6">
 						<img class="img-fluid d-flex mx-auto" src="img/qrcode_for_gh.jpg" alt="">
 					</div>
+					
 				</div>
 			</div>
 		</section>
@@ -90,28 +89,89 @@
 	
 		<!-- Start Align Area -->
 		<div class="white-bg">
-		    <div class="container">
+		    <div class="container border-top-generic">
 		        
-		        <div class="section-top-border">
-					<div class="mobileShow">
-						<h3 class="mb-30">
-							向右滑动表格查看更多内容</h3>
-					</div>
-		            <div class="progress-table-wrap">
-		                <div class="progress-table">
-							{table}
-						</div>
-		            </div>
-		        </div>
-		        <div class="section-top-border">
-		            <h3>走势图</h3>
-		            <div class="row gallery-item">
-						{image}
-					</div>
+					<div id="netvalue_container" style="height: 480px"></div>
+					<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js"></script>
+					<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts-gl/dist/echarts-gl.min.js"></script>
+					<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts-stat/dist/ecStat.min.js"></script>
+					<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/dist/extension/dataTool.min.js"></script>
+					<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/map/js/china.js"></script>
+					<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/map/js/world.js"></script>
+				  
+					<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/dist/extension/bmap.min.js"></script>
+					<script type="text/javascript">
+			 var dom = document.getElementById("netvalue_container");
+			 var myChart = echarts.init(dom);
+			 var app = {};
+			 option = null;
+			 option = {
+				 title: {
+					 text: 'CTA业绩曲线'
+				 },
+				 tooltip: {
+					 trigger: 'axis'
+				 },
+				 legend: {
+					 data: ['净值曲线']
+				 },
+				 grid: {
+					 left: '3%',
+					 right: '4%',
+					 bottom: '3%',
+					 containLabel: true
+				 },
+				 toolbox: {
+					 feature: {
+						 saveAsImage: {}
+					 }
+				 },
+				 xAxis: {
+					 type: 'category',
+					 boundaryGap: false,
+					 data: dates_pos 
+				},
+				 yAxis: {
+					 type: 'value',
+					 min: 0.95
+				 },
+				 series: [
+					 {
+						 name: '净值',
+						 type: 'line',
+						 stack: '总量',
+						 data: net_value_pos
+					 }
+				 ]
+			 };
+			 ;
+			 if (option && typeof option === "object") {
+				 myChart.setOption(option, true);
+			 }
+					</script>
 				</div>
 				
-		    </div>
-		</div>
+			</div>
+			
+		<!-- Start Sample Area -->
+		<section class="sample-text-area">
+			<div class="container">
+				<h3 class="text-heading">策略说明</h3>
+				<p class="sample-text">
+					<ul class="unordered-list">
+						<li>该策略投资于国内期货市场，涉及40多个流动性好期货品种。</li>
+						<li>策略于2017年底形成初版。</li>
+						<li>2018年后跟踪效果优秀，于是在2018年12月12日开始实盘。</li>
+						<li>2019年3月22日，更新了策略模型。</li>
+						<li>2019年9月进一步更新了模型。</li>
+						<li>其中2019年的巨大回撤是因为那段时间黑天鹅频出，行情大幅度震荡。</li>
+						<li>疫情期间2020年3月许多品种形成强趋势，挣了一大笔。</li>
+						<li><a href = 'https://www.zxjt.cn/index.php?action=site.cps-detail&user_id=548&range=1y'> 点击查看第三方平台爬取我的结算单记录的账户情况</a></li>
+					</ul>
+				</p>
+			</div>
+		</section>
+		<!-- End Sample Area -->
 		<!-- Strat Footer Area -->
 		<footer class="section-gap">
 			<div class="container">

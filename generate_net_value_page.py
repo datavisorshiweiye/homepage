@@ -15,11 +15,14 @@ def make():
         if net_value[i] > pre_max:
             pre_max = net_value[i]
         draw_down.append(round(-100*(1-net_value[i]/pre_max), 3))
+    df = pd.read_excel('/Users/alex/Dropbox/CTA/FundReport.xlsx', sheet_name = '自营', header = 0)
+    ytd = "%.2f%%"%(list(df['YTD'])[-1]*100)
     draw_down_str = str(draw_down)
     template = open('net_value_template.html').read()
     template = template.replace('dates_pos', date_str)
     template = template.replace('net_value_pos', data_str)
     template = template.replace('draw_down_pos', draw_down_str)
+    template = template.replace('YTD', ytd)
     fp = open('net_value.html','w')
     fp.write(template)
     fp.close()

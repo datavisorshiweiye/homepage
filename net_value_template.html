@@ -89,7 +89,6 @@
 		<!-- Start Align Area -->
 		<div class="white-bg">
 		    <div class="container border-top-generic">
-		        
 					<div id="netvalue_container" style="height: 360px"></div>
 					<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js"></script>
 					<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts-gl/dist/echarts-gl.min.js"></script>
@@ -106,7 +105,7 @@
 			 option = null;
 			 option = {
 				 title: {
-					 text: 'CTA业绩曲线'
+					 text: 'CTA业绩曲线, 年初以来: YTD'
 				 },
 				 tooltip: {
 					 trigger: 'axis'
@@ -200,7 +199,8 @@
 					 name: '回撤',
 					 type: 'line',
 					 stack: '总量',
-					 data: draw_down_pos
+					 data: draw_down_pos,
+					 areaStyle: {type:"default"}
 				 }
 			 ]
 		 };

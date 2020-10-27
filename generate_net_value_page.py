@@ -4,8 +4,8 @@ import os
 
 def make():
     df = pd.read_excel('/Users/alex/Dropbox/CTA/FundReport.xlsx', sheet_name = '样本外周度', names = ['date', 'net_value'],
-                    header=-1)
-    df['net_value'] = [round(a, 3) for a in df['net_value']]
+                    header=1)
+    df['net_value'] = [round(float(a), 3) for a in df['net_value']]
     date_str = str(list([d.date().strftime('%Y-%m-%d') for d in df['date']]))
     data_str = str(list(df['net_value']))
     draw_down = [0]

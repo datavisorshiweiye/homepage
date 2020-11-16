@@ -3,6 +3,7 @@ import sys
 import os
 import numpy as np
 
+
 def make():
     df = pd.read_excel('/Users/alex/Dropbox/CTA/FundReport.xlsx', sheet_name = '样本外周度', names = ['date', 'net_value'],
                     header=1)
@@ -16,7 +17,14 @@ def make():
     print("Information Ratio is %f"%information_ratio)
     sharpe_ratio = np.sqrt(52) * (df['weekly_return'].mean() - 0.02/52)/df['weekly_return'].std()
     print("Sharpe Ratio is %f"%sharpe_ratio)
-    
+
+    recent_year_return = df['weekly_return'][-52:]
+    information_ratio = np.sqrt(52) * recent_year_return.mean()/recent_year_return.std()
+    print("Recent Year Information Ratio is %f"%information_ratio)
+    sharpe_ratio = np.sqrt(52) * (recent_year_return.mean() - 0.02/52)/recent_year_return.std()
+    print("Recent Year Sharpe Ratio is %f"%sharpe_ratio)
+
+
     date_str = str(list([d.date().strftime('%Y-%m-%d') for d in df['date']]))
     data_str = str(list(df['net_value']))
     draw_down = [0]

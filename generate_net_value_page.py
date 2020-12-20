@@ -20,8 +20,8 @@ def make():
     print("Sharpe Ratio is %f"%sharpe_ratio)
 
     recent_year_return = df['weekly_return'][-52:]
-    information_ratio = np.sqrt(52) * recent_year_return.mean()/recent_year_return.std()
-    print("Recent Year Information Ratio is %f"%information_ratio)
+    recent_year_information_ratio = np.sqrt(52) * recent_year_return.mean()/recent_year_return.std()
+    print("Recent Year Information Ratio is %f"%recent_year_information_ratio)
     sharpe_ratio = np.sqrt(52) * (recent_year_return.mean() - 0.02/52)/recent_year_return.std()
     print("Recent Year Sharpe Ratio is %f"%sharpe_ratio)
 
@@ -43,6 +43,8 @@ def make():
     template = template.replace('net_value_pos', data_str)
     template = template.replace('draw_down_pos', draw_down_str)
     template = template.replace('YTD', ytd)
+    template = template.replace('YIR', "%.2f"%information_ratio)
+    template = template.replace('RIR', "%.2f"%recent_year_information_ratio)
     fp = open('net_value.html','w')
     fp.write(template)
     fp.close()
